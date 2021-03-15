@@ -3,7 +3,7 @@ INCLUDE Irvine32.inc
 
 .data
 	
-	array DWORD 
+	array DWORD
 	
 
 .code
