@@ -41,27 +41,31 @@ main PROC
 	SHL		ebx,2	;ebx=(row * 4+column)*2
 	 
 	MOV		eax,[array1+ebx]			;mov designed array element to ECX using INDIRECT ADDRESSING	
-	MOV		edx,OFFSET mAccessElement	;Load EDX with the mAccessElement strinf OFFSET
+	MOV		edx,OFFSET mAccessElement	;Load EDX with the mAccessElement string OFFSET
 	CALL	WriteString					;Show message on sreen
 	CALL	WriteInt					;Show the elenemnt value on Screen 
 	CALL	Crif						;Go to next line
 
 	MOVSX	ecx,z						;MOVE the value of z into ecx ;movsx λαμβανει το προσιμο
 	ADD		eax,ecx						;EAX=22+ ECX=-8
-	MOV		edx,OFFSET mResultSum		;Load EDX with the mResultSum strinf OFFSET
+	MOV		edx,OFFSET mResultSum		;Load EDX with the mResultSum string OFFSET
 	CALL	WriteString					;Show message on sreen
 	CALL	WriteInt					;Show the elenemnt value on Screen 
 	CALL	Crif						;Go to next line
 
 	MOV		eax,[array+ebx]				;MOVE the value of z into ebx
 	sub		eax,ecx						;EAX = 22 - ecx =52
-	mov		edx,OFFSET mResultDiff		;Load EDX with the mResultDiff strinf OFFSET
+	mov		edx,OFFSET mResultDiff		;Load EDX with the mResultDiff string OFFSET
 	CALL	WriteString					;Show message on sreen
 	CALL	WriteInt					;Show the elenemnt value on Screen 
 	CALL	Crif						;Go to next line
 
 	;***ASKISI 2***
-
+	MOV eax,[array1+13*4]				;MOVE designed array element to ECX	using DIRECT  ADDRESSING
+	MOV edx,OFFSET mAccessElement		;Load edx with the mAccessElement	string OFFSET
+	CALL	WriteString					;Show message on sreen
+	CALL	WriteInt					;Show the elenemnt value on Screen 
+	CALL	Crif						;Go to next line
 
 	exit
 main endp
