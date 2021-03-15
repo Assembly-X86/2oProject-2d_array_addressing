@@ -18,9 +18,12 @@ INCLUDE Irvine32.inc
 		SWORD 02d,12d,22d,32d
 		SWORD 03d,13d,23d,33d
 
-.code
+		x BYTE 2d
+		y BYTE 2d
+		z SWORD -30d
+.code 
 main PROC
-
+	
 
 
 	exit
