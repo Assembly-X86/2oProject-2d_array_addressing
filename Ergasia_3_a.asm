@@ -23,7 +23,44 @@ INCLUDE Irvine32.inc
 		z SWORD -30d
 .code 
 main PROC
-	
+	;***ASKISI 1***
+	MOV edx,OFFSET mCalculating ;Load edx with the mCalculating string OFFSET
+	CALL WriteString	;Show message on sreen 
+
+	;Calculating address of array(2,2)
+	;the result will be 32bit hence the arthmetic operations
+	;are performed on 32bit register
+
+	;Effectiv address(r,c)=array+(r* ElementPerRow +c)* ElementSize
+	;EBX(2,2)=array1+(ROW * 4 + COLUMN)*4
+
+	MOVZX	ebx,x	;move the row number into ebx register  ;movzx επεκτηνει τον αριθμο με μηδενικα 
+	SHL		ebx,2	;EBX=ROW*4
+	MOVZX	ecx,y	;move the row number into ecx register
+	ADD		ebx,ecx ;ebx=row * 4+column
+	SHL		ebx,2	;ebx=(row * 4+column)*2
+	 
+	MOV		eax,[array1+ebx]			;mov designed array element to ECX using INDIRECT ADDRESSING	
+	MOV		edx,OFFSET mAccessElement	;Load EDX with the mAccessElement strinf OFFSET
+	CALL	WriteString					;Show message on sreen
+	CALL	WriteInt					;Show the elenemnt value on Screen 
+	CALL	Crif						;Go to next line
+
+	MOVSX	ecx,z						;MOVE the value of z into ecx ;movsx λαμβανει το προσιμο
+	ADD		eax,ecx						;EAX=22+ ECX=-8
+	MOV		edx,OFFSET mResultSum		;Load EDX with the mResultSum strinf OFFSET
+	CALL	WriteString					;Show message on sreen
+	CALL	WriteInt					;Show the elenemnt value on Screen 
+	CALL	Crif						;Go to next line
+
+	MOV		eax,[array+ebx]				;MOVE the value of z into ebx
+	sub		eax,ecx						;EAX = 22 - ecx =52
+	mov		edx,OFFSET mResultDiff		;Load EDX with the mResultDiff strinf OFFSET
+	CALL	WriteString					;Show message on sreen
+	CALL	WriteInt					;Show the elenemnt value on Screen 
+	CALL	Crif						;Go to next line
+
+	;***ASKISI 2***
 
 
 	exit
